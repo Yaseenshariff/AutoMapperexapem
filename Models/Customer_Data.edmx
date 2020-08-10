@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Customer_DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActionLog">
+          <Key>
+            <PropertyRef Name="ActionLogId" />
+          </Key>
+          <Property Name="ActionLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Controller" Type="nvarchar" MaxLength="100" />
+          <Property Name="Action" Type="nvarchar" MaxLength="100" />
+          <Property Name="ClientIP" Type="nvarchar" MaxLength="200" />
+          <Property Name="TimeStamp" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Customer_Data.dbo.CustomersBackup_2017' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CustomersBackup_2017">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="FirstName" Type="varchar" MaxLength="200" />
+          <Property Name="LastName" Type="varchar" MaxLength="200" />
+          <Property Name="UserName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="200" />
+          <Property Name="Phone" Type="varchar" MaxLength="200" />
+          <Property Name="UserGroupID" Type="int" />
+          <Property Name="Deactivated" Type="char" MaxLength="1" />
+          <Property Name="Gender" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Customer_Data.dbo.CustomersBackup2017' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CustomersBackup2017">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="FirstName" Type="varchar" MaxLength="200" />
+          <Property Name="LastName" Type="varchar" MaxLength="200" />
+          <Property Name="UserName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="200" />
+          <Property Name="Phone" Type="varchar" MaxLength="200" />
+          <Property Name="UserGroupID" Type="int" />
+          <Property Name="Deactivated" Type="char" MaxLength="1" />
+          <Property Name="Gender" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Feeds">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="FieldDescription" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Customer_Data.dbo.SareeDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SareeDetails">
+          <Key>
+            <PropertyRef Name="SareeID" />
+          </Key>
+          <Property Name="SareeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SareeName" Type="varchar" MaxLength="300" />
+          <Property Name="SareeImage" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="FirstName" Type="varchar" MaxLength="200" />
+          <Property Name="LastName" Type="varchar" MaxLength="200" />
+          <Property Name="UserName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="200" />
+          <Property Name="Phone" Type="varchar" MaxLength="200" />
+          <Property Name="UserGroupID" Type="int" />
+          <Property Name="Deactivated" Type="char" MaxLength="1" />
+          <Property Name="Gender" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="Customer_DataModelStoreContainer">
+          <EntitySet Name="ActionLog" EntityType="Self.ActionLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feeds" EntityType="Self.Feeds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomersBackup_2017" EntityType="Self.CustomersBackup_2017" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CustomersBackup_2017].[ID] AS [ID], 
+    [CustomersBackup_2017].[UserID] AS [UserID], 
+    [CustomersBackup_2017].[Email] AS [Email], 
+    [CustomersBackup_2017].[FirstName] AS [FirstName], 
+    [CustomersBackup_2017].[LastName] AS [LastName], 
+    [CustomersBackup_2017].[UserName] AS [UserName], 
+    [CustomersBackup_2017].[Password] AS [Password], 
+    [CustomersBackup_2017].[Phone] AS [Phone], 
+    [CustomersBackup_2017].[UserGroupID] AS [UserGroupID], 
+    [CustomersBackup_2017].[Deactivated] AS [Deactivated], 
+    [CustomersBackup_2017].[Gender] AS [Gender]
+    FROM [dbo].[CustomersBackup_2017] AS [CustomersBackup_2017]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CustomersBackup2017" EntityType="Self.CustomersBackup2017" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CustomersBackup2017].[ID] AS [ID], 
+    [CustomersBackup2017].[UserID] AS [UserID], 
+    [CustomersBackup2017].[Email] AS [Email], 
+    [CustomersBackup2017].[FirstName] AS [FirstName], 
+    [CustomersBackup2017].[LastName] AS [LastName], 
+    [CustomersBackup2017].[UserName] AS [UserName], 
+    [CustomersBackup2017].[Password] AS [Password], 
+    [CustomersBackup2017].[Phone] AS [Phone], 
+    [CustomersBackup2017].[UserGroupID] AS [UserGroupID], 
+    [CustomersBackup2017].[Deactivated] AS [Deactivated], 
+    [CustomersBackup2017].[Gender] AS [Gender]
+    FROM [dbo].[CustomersBackup2017] AS [CustomersBackup2017]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SareeDetails" EntityType="Self.SareeDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SareeDetails].[SareeID] AS [SareeID], 
+    [SareeDetails].[SareeName] AS [SareeName], 
+    [SareeDetails].[SareeImage] AS [SareeImage]
+    FROM [dbo].[SareeDetails] AS [SareeDetails]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Customer_DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ActionLog">
+          <Key>
+            <PropertyRef Name="ActionLogId" />
+          </Key>
+          <Property Name="ActionLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Controller" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Action" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ClientIP" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Feed">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="FieldDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserGroupID" Type="Int32" />
+          <Property Name="Deactivated" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CustomersBackup_2017">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserGroupID" Type="Int32" />
+          <Property Name="Deactivated" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CustomersBackup2017">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserGroupID" Type="Int32" />
+          <Property Name="Deactivated" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SareeDetail">
+          <Key>
+            <PropertyRef Name="SareeID" />
+          </Key>
+          <Property Name="SareeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SareeName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="SareeImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="Customer_DataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ActionLogs" EntityType="Self.ActionLog" />
+          <EntitySet Name="Feeds" EntityType="Self.Feed" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="CustomersBackup_2017" EntityType="Self.CustomersBackup_2017" />
+          <EntitySet Name="CustomersBackup2017" EntityType="Self.CustomersBackup2017" />
+          <EntitySet Name="SareeDetails" EntityType="Self.SareeDetail" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Customer_DataModelStoreContainer" CdmEntityContainer="Customer_DataEntities">
+          <EntitySetMapping Name="ActionLogs">
+            <EntityTypeMapping TypeName="Customer_DataModel.ActionLog">
+              <MappingFragment StoreEntitySet="ActionLog">
+                <ScalarProperty Name="ActionLogId" ColumnName="ActionLogId" />
+                <ScalarProperty Name="Controller" ColumnName="Controller" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ClientIP" ColumnName="ClientIP" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feeds">
+            <EntityTypeMapping TypeName="Customer_DataModel.Feed">
+              <MappingFragment StoreEntitySet="Feeds">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="FieldDescription" ColumnName="FieldDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Customer_DataModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomersBackup_2017">
+            <EntityTypeMapping TypeName="Customer_DataModel.CustomersBackup_2017">
+              <MappingFragment StoreEntitySet="CustomersBackup_2017">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomersBackup2017">
+            <EntityTypeMapping TypeName="Customer_DataModel.CustomersBackup2017">
+              <MappingFragment StoreEntitySet="CustomersBackup2017">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+                <ScalarProperty Name="Deactivated" ColumnName="Deactivated" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SareeDetails">
+            <EntityTypeMapping TypeName="Customer_DataModel.SareeDetail">
+              <MappingFragment StoreEntitySet="SareeDetails">
+                <ScalarProperty Name="SareeID" ColumnName="SareeID" />
+                <ScalarProperty Name="SareeName" ColumnName="SareeName" />
+                <ScalarProperty Name="SareeImage" ColumnName="SareeImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
